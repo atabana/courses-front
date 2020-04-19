@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CoursesListComponent } from './courses/courses-list.component';
 import { CourseThumbnailComponent } from './courses/course-thumbnail-component';
 import { NavBarComponent } from './nav/navbar.component';
+import { CourseService } from './courses/shared/course.service'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { NavBarComponent } from './nav/navbar.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
