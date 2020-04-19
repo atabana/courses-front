@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from './shared/course.service';
-import { toBase64String } from '@angular/compiler/src/output/source_map';
-
-declare let toastr
+import { ToastrService } from '../common/toastr.service';
 
 @Component({
   selector: 'courses-list',
@@ -22,7 +20,7 @@ export class CoursesListComponent implements OnInit{
 
   courses:any[]
 
-  constructor(private courseService: CourseService){
+  constructor(private courseService: CourseService, private toasterService: ToastrService){
   }
 
   ngOnInit(){
@@ -30,6 +28,6 @@ export class CoursesListComponent implements OnInit{
 
   }
   handleThumbnailClick(courseName){
-    toastr.success(courseName)
+    this.toasterService.success('success: ', courseName)
   }
 }
