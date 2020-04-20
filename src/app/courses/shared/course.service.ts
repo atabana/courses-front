@@ -5,6 +5,10 @@ export class CourseService{
     getCourses(){
         return COURSES
     }
+
+    getCourse(id:number){
+      return COURSES.find( course => course.id === id)
+    }
 }
 
 const COURSES = 

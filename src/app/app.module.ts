@@ -7,16 +7,21 @@ import { CourseThumbnailComponent } from './courses/course-thumbnail-component';
 import { NavBarComponent } from './nav/navbar.component';
 import { CourseService } from './courses/shared/course.service'
 import { ToastrService } from './common/toastr.service';
+import { CourseDetailsComponent } from './courses/course-details/course-details.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from 'src/routes';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoursesListComponent,
     CourseThumbnailComponent,
+    CourseDetailsComponent,
     NavBarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [CourseService, ToastrService],
   bootstrap: [AppComponent]

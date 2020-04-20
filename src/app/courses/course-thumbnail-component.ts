@@ -4,7 +4,7 @@ import { Component , Input} from '@angular/core';
   selector: 'course-thumbnail',
   template: `
 
-  <div class="well hoverwell thumbnail">
+  <div [routerLink]="['/courses', course.id]" class="well hoverwell thumbnail">
   <h2>{{course?.name}}</h2>
   <div>Date: {{course?.date}}</div>
   <div>Price: \${{course?.price}}</div>
