@@ -10,6 +10,7 @@ import { ToastrService } from './common/toastr.service';
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
+import { CreateCourseComponent } from './courses/create-course.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { appRoutes } from 'src/routes';
     CoursesListComponent,
     CourseThumbnailComponent,
     CourseDetailsComponent,
+    CreateCourseComponent,
     NavBarComponent
   ],
   imports: [
