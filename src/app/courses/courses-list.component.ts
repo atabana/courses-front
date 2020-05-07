@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from './shared/course.service';
 import { ToastrService } from '../common/toastr.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'courses-list',
@@ -20,12 +21,11 @@ export class CoursesListComponent implements OnInit{
 
   courses:any[]
 
-  constructor(private courseService: CourseService, private toasterService: ToastrService){
+  constructor(private courseService: CourseService, private toasterService: ToastrService, private route: ActivatedRoute){
   }
 
   ngOnInit(){
-    this.courses = this.courseService.getCourses();
-
+    this.courses = this.route.snapshot.data['courses']
   }
   handleThumbnailClick(courseName){
     this.toasterService.success('success: ', courseName)

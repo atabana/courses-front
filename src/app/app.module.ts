@@ -11,6 +11,9 @@ import { CourseDetailsComponent } from './courses/course-details/course-details.
 import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
 import { CreateCourseComponent } from './courses/create-course.component';
+import { Error404Component } from './errors/error-404.component';
+import { CourseRouteActivator } from './courses/course-details/course-route-activator.service';
+import { CourseListResolver } from './courses/course-list-resolver.service';
 
 @NgModule({
   declarations: [
@@ -19,13 +22,26 @@ import { CreateCourseComponent } from './courses/create-course.component';
     CourseThumbnailComponent,
     CourseDetailsComponent,
     CreateCourseComponent,
-    NavBarComponent
+    NavBarComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CourseService, ToastrService],
+  providers: [CourseService, ToastrService, CourseRouteActivator,CourseListResolver,
+    {
+      provide: 'canDeactivateCreateEvent',
+      useValue: checkDirtyState
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function checkDirtyState(component: CreateCourseComponent){
+
+  if(component.isDirty){
+    return window.confirm('You have not saved this Course, do you really want to cancel?')
+  }
+}

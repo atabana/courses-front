@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core'
+import { Subject } from 'rxjs'
 
 @Injectable()
 export class CourseService{
     getCourses(){
-        return COURSES
+
+        let subject = new Subject()
+        setTimeout( () => {subject.next(COURSES); subject.complete();},
+         100)
+        return subject
     }
 
     getCourse(id:number){
