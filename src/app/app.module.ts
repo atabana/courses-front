@@ -14,6 +14,7 @@ import { CreateCourseComponent } from './courses/create-course.component';
 import { Error404Component } from './errors/error-404.component';
 import { CourseRouteActivator } from './courses/course-details/course-route-activator.service';
 import { CourseListResolver } from './courses/course-list-resolver.service';
+import { AuthService }  from './user/auth.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { CourseListResolver } from './courses/course-list-resolver.service';
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CourseService, ToastrService, CourseRouteActivator,CourseListResolver,
+  providers: [CourseService, ToastrService, CourseRouteActivator,CourseListResolver,AuthService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
