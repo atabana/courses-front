@@ -14,5 +14,6 @@ export const appRoutes:Routes = [
     { path: 'courses/:id', component: CourseDetailsComponent,
         canActivate: [CourseRouteActivator]},
     { path: '404', component: Error404Component},
-    { path: '', redirectTo: '/courses', pathMatch: 'full'}
+    { path: '', redirectTo: '/courses', pathMatch: 'full'},
+    { path: 'user', loadChildren: './user/user.module#UserModule'}
 ]

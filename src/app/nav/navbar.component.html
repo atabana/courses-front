@@ -7,9 +7,10 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li>
-            <a [routerLink]="['/courses']">All Courses</a>
+            <a [routerLink]="['/courses']" routerLinkActive="active" 
+            [routerLinkActiveOptions] = "{exact: true}">All Courses</a>
           </li>
-          <li><a [routerLink]="['/courses/new']" href="">Create Course</a></li>
+          <li><a [routerLink]="['/courses/new']" routerLinkActive="active" href="">Create Course</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
               Courses
@@ -25,7 +26,7 @@
         <div class="navbar-header navbar-right">
           <ul class="nav navbar-nav">
             <li>
-              <a>Welcome Ahmed</a>
+              <a [routerLink]="['user/profile']">Welcome Ahmed</a>
             </li>
           </ul>
         </div>
