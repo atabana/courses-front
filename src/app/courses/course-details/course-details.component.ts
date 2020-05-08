@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CourseService } from '../shared/course.service';
 import { ActivatedRoute } from '@angular/router';
+import { ICourse } from '../shared/course.model';
 
 @Component({
     
@@ -15,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class CourseDetailsComponent{
 
-    course:any
+    course:ICourse
 
     constructor(private courseService: CourseService, private route:ActivatedRoute){
     }

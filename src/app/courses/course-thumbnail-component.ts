@@ -1,4 +1,5 @@
 import { Component , Input} from '@angular/core';
+import { ICourse } from './shared/course.model';
 
 @Component({
   selector: 'course-thumbnail',
@@ -14,6 +15,6 @@ import { Component , Input} from '@angular/core';
   `
 })
 export class CourseThumbnailComponent{
-    @Input() course: any
+    @Input() course: ICourse
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CourseService } from './shared/course.service';
 import { ToastrService } from '../common/toastr.service';
 import { ActivatedRoute } from '@angular/router';
+import { ICourse } from './shared/course.model';
 
 @Component({
   selector: 'courses-list',
@@ -19,7 +20,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CoursesListComponent implements OnInit{
 
-  courses:any[]
+  courses:ICourse[]
 
   constructor(private courseService: CourseService, private toasterService: ToastrService, private route: ActivatedRoute){
   }

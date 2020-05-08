@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core'
-import { Subject } from 'rxjs'
+import { Subject, Observable } from 'rxjs'
+import { ICourse } from './course.model';
 
 @Injectable()
 export class CourseService{
-    getCourses(){
+    getCourses(): Observable<ICourse[]>{
 
-        let subject = new Subject()
+        let subject = new Subject<ICourse[]>()
         setTimeout( () => {subject.next(COURSES); subject.complete();},
          100)
         return subject
     }
 
-    getCourse(id:number){
+    getCourse(id:number): ICourse{
       return COURSES.find( course => course.id === id)
     }
 }
 
-const COURSES = 
+const COURSES: ICourse[]= 
 [
     {
       id: 1,
       name: 'Angular Connect',
-      date: '9/26/2036',
-      time: '10:00 am',
+      date: new Date('9/26/2036'),
       price: 599.99,
       imageUrl: '/assets/images/angularconnect-shield.png',
       location: {
@@ -99,8 +99,7 @@ const COURSES =
     {
       id: 2,
       name: 'ng-nl',
-      date: '4/15/2037',
-      time: '9:00 am',
+      date: new Date('4/15/2037'),
       price: 950.00,
       imageUrl: '/assets/images/ng-nl.png',
       location: {
@@ -159,8 +158,7 @@ const COURSES =
     {
       id: 3,
       name: 'ng-conf 2037',
-      date: '5/4/2037',
-      time: '9:00 am',
+      date: new Date('5/4/2037'),
       price: 759.00,
       imageUrl: '/assets/images/ng-conf.png',
       location: {
@@ -241,8 +239,7 @@ const COURSES =
     {
       id: 4,
       name: 'UN Angular Summit',
-      date: '6/10/2037',
-      time: '8:00 am',
+      date: new Date('6/10/2037'),
       price: 800.00,
       imageUrl: '/assets/images/basic-shield.png',
       location: {
@@ -290,8 +287,7 @@ const COURSES =
     {
       id: 5,
       name: 'ng-vegas',
-      date: '2/10/2037',
-      time: '9:00 am',
+      date: new Date('2/10/2037'),
       price: 400.00,
       imageUrl: '/assets/images/ng-vegas.png',
       location: {
