@@ -15,6 +15,8 @@ import { Error404Component } from './errors/error-404.component';
 import { CourseRouteActivator } from './courses/course-details/course-route-activator.service';
 import { CourseListResolver } from './courses/course-list-resolver.service';
 import { AuthService }  from './user/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateSessionComponent } from './courses/course-details/create-session.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,13 @@ import { AuthService }  from './user/auth.service';
     CourseDetailsComponent,
     CreateCourseComponent,
     NavBarComponent,
-    Error404Component
+    Error404Component,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [CourseService, ToastrService, CourseRouteActivator,CourseListResolver,AuthService,

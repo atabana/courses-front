@@ -15,6 +15,15 @@ export class CourseService{
     getCourse(id:number): ICourse{
       return COURSES.find( course => course.id === id)
     }
+
+    saveCourse(course){
+      course.id = 999
+      course.sessions = []
+      COURSES.push(course)
+      console.log(COURSES)
+      console.log(course)
+
+    }
 }
 
 const COURSES: ICourse[]= 

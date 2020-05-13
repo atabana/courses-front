@@ -5,6 +5,7 @@ import { CreateCourseComponent } from './app/courses/create-course.component';
 import { Error404Component } from './app/errors/error-404.component';
 import { CourseRouteActivator } from './app/courses/course-details/course-route-activator.service';
 import { CourseListResolver } from './app/courses/course-list-resolver.service';
+import { CreateSessionComponent } from './app/courses/course-details/create-session.component';
 
 export const appRoutes:Routes = [
     { path: 'courses/new', component: CreateCourseComponent, canDeactivate: ['canDeactivateCreateEvent']},
@@ -13,6 +14,7 @@ export const appRoutes:Routes = [
     },
     { path: 'courses/:id', component: CourseDetailsComponent,
         canActivate: [CourseRouteActivator]},
+    { path: 'courses/session/new', component: CreateSessionComponent},
     { path: '404', component: Error404Component},
     { path: '', redirectTo: '/courses', pathMatch: 'full'},
     { path: 'user', loadChildren: './user/user.module#UserModule'}
