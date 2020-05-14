@@ -24,6 +24,10 @@ export class CourseService{
       console.log(course)
 
     }
+    updateCourse(course){
+      let index = COURSES.findIndex( x => x.id = course.id)
+      COURSES[index] = course
+    }
 }
 
 const COURSES: ICourse[]= 

@@ -17,6 +17,7 @@ import { CourseListResolver } from './courses/course-list-resolver.service';
 import { AuthService }  from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './courses/course-details/create-session.component';
+import { SessionListComponent } from './courses/course-details/session-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CreateSessionComponent } from './courses/course-details/create-session.
     CreateCourseComponent,
     NavBarComponent,
     Error404Component,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
   imports: [
     BrowserModule,

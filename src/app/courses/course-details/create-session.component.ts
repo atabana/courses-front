@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { ISession } from '../shared/course.model';
 import { restrictedWords } from '../shared/restrictedWords.validator';
 
 
 @Component({
-    
+    selector: 'create-session',
     templateUrl: './create-session.component.html',
     styles: [`
     em { float:right; color:#E05C65; padding-left: 10px}
@@ -15,6 +15,8 @@ import { restrictedWords } from '../shared/restrictedWords.validator';
 
 export class CreateSessionComponent implements OnInit{
 
+    @Output() saveNewsession = new EventEmitter()
+    @Output() cancelAddSession = new EventEmitter()
     newSessionForm: FormGroup
     name: FormControl
     presenter: FormControl
@@ -41,7 +43,6 @@ export class CreateSessionComponent implements OnInit{
     }
 
     saveSession(formValues){
-        console.log(formValues)
         let session: ISession = {
             id: undefined,
             name: formValues.name,
@@ -51,6 +52,11 @@ export class CreateSessionComponent implements OnInit{
             abstract: formValues.abstract,
             voters: []
         }
+        this.saveNewsession.emit(session)
+    }
+
+    cancel(){
+        this.cancelAddSession.emit()
     }
 
 
