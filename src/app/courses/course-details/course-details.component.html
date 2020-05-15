@@ -3,15 +3,15 @@
   
     <div class="row">
       <div class="col-md-11">
-        <h2>{{course?.name}} </h2>
+        <h2>{{course?.name | uppercase}} </h2>
       </div>
     </div>
   
     <div class="row">
       <div class="col-md-6">
-        <div><strong>Date:</strong> {{course?.date}}</div>
+        <div><strong>Date:</strong> {{course?.date | date}}</div>
         <div><strong>Time:</strong> {{course?.time}}</div>
-        <div><strong>Price:</strong> ${{course?.price}}</div>
+        <div><strong>Price:</strong>{{course?.price | currency:'USD'}}</div>
       </div>
       <div class="col-md-6">
         <address>

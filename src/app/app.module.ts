@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './courses/course-details/create-session.component';
 import { SessionListComponent } from './courses/course-details/session-list.component';
 import { CollapsableWellComponent } from './common/collapseable-well.component';
+import { DurationPipe } from './courses/shared/duration.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CollapsableWellComponent } from './common/collapseable-well.component';
     Error404Component,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsableWellComponent
+    CollapsableWellComponent,
+    DurationPipe
     
   ],
   imports: [

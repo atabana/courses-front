@@ -6,9 +6,9 @@ import { ICourse } from './shared/course.model';
   template: `
 
   <div [routerLink]="['/courses', course.id]" class="well hoverwell thumbnail">
-  <h2>{{course?.name}}</h2>
-  <div>Date: {{course?.date}}</div>
-  <div>Price: \${{course?.price}}</div>
+  <h2>{{course?.name | uppercase}}</h2>
+  <div>Date: {{course?.date | date}}</div>
+  <div>Price: {{course?.price | currency: 'USD'}}</div>
   <div>Location: {{course?.location?.city}} - {{course?.location?.country}}</div>
   </div>
   
