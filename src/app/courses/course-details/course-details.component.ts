@@ -18,7 +18,9 @@ import { ICourse, ISession } from '../shared/course.model';
 export class CourseDetailsComponent{
     addMode: boolean 
     course:ICourse
-
+    filterBy: string = 'all';
+    sortBy: string = 'votes'
+    
     constructor(private courseService: CourseService, private route:ActivatedRoute){
     }
   
