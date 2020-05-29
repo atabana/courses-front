@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CourseService } from '../shared/course.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ICourse, ISession } from '../shared/course.model';
 
 @Component({
@@ -25,7 +25,10 @@ export class CourseDetailsComponent{
     }
   
     ngOnInit(){
-      this.course = this.courseService.getCourse(+this.route.snapshot.params['id']);
+      this.route.params.forEach((params: Params) => {
+          this.course = this.courseService.getCourse(+params['id'])
+          this.addMode = false
+      })
   
     }
     addSession(){
