@@ -7,6 +7,9 @@ import { CourseThumbnailComponent } from './courses/course-thumbnail-component';
 import { NavBarComponent } from './nav/navbar.component';
 import { CourseService } from './courses/shared/course.service'
 import { ToastrService } from './common/toastr.service';
+import { SimpleModalComponent } from './common/simple-modal.component';
+
+import { JQ_TOKEN } from './common/jQuery.service'
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
@@ -20,6 +23,9 @@ import { CreateSessionComponent } from './courses/course-details/create-session.
 import { SessionListComponent } from './courses/course-details/session-list.component';
 import { CollapsableWellComponent } from './common/collapseable-well.component';
 import { DurationPipe } from './courses/shared/duration.pipe';
+import { ModalTriggerDirective } from './common/modal-trigger.directive';
+
+let jQuery = window['$']
 
 @NgModule({
   declarations: [
@@ -33,8 +39,10 @@ import { DurationPipe } from './courses/shared/duration.pipe';
     CreateSessionComponent,
     SessionListComponent,
     CollapsableWellComponent,
-    DurationPipe
-    
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
+  
   ],
   imports: [
     BrowserModule,
@@ -46,6 +54,10 @@ import { DurationPipe } from './courses/shared/duration.pipe';
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
+    }, 
+    {
+      provide: JQ_TOKEN,
+      useValue: jQuery
     }
   ],
   bootstrap: [AppComponent]

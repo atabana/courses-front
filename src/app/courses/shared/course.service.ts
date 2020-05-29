@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core'
+import { Injectable, EventEmitter } from '@angular/core'
 import { Subject, Observable } from 'rxjs'
-import { ICourse } from './course.model';
+import { ICourse,ISession } from './course.model';
 
 @Injectable()
 export class CourseService{
@@ -27,6 +27,27 @@ export class CourseService{
     updateCourse(course){
       let index = COURSES.findIndex( x => x.id = course.id)
       COURSES[index] = course
+    }
+
+    searchSessions(searchTerm: string){
+      var term = searchTerm.toLocaleLowerCase()
+      var results: ISession[] = []
+
+      COURSES.forEach( course => {
+        var matchingSessions = course.sessions.filter( session => 
+          session.name.toLocaleLowerCase().indexOf(term) > 1)
+        matchingSessions = matchingSessions.map( (session: any) => {
+          session.courseId = course.id
+          return session 
+        })
+        results = results.concat(matchingSessions)
+
+      })
+      var emitter = new EventEmitter(true)
+      setTimeout( () => {
+        emitter.emit(results)
+      }, 100)
+      return emitter
     }
 }
 
