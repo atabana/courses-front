@@ -24,7 +24,7 @@ export class LoginComponent {
 
     }
     cancel(){
-        this.router.navigate(['coures'])
+        this.router.navigate(['courses'])
     }
 
 }

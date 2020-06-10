@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { ISession } from '../shared/course.model';
+import { AuthService } from 'src/app/user/auth.service';
+import { VoterService } from './voter.service';
 
 
 @Component({
@@ -15,6 +17,11 @@ export class SessionListComponent implements OnChanges{
 @Input() sessions: ISession[]
 
 visibleSessions: ISession[] = []
+
+constructor(private auth: AuthService, private voterService: VoterService){
+
+}
+
 ngOnChanges(){
     if(this.sessions){
         this.filterSessions(this.filterBy)
@@ -31,6 +38,29 @@ filterSessions(filter){
     }
 }
 
+toggleVote(session: ISession){
+    console.log('toggleVote' + this.userHasVoted(session))
+    if(this.userHasVoted(session)){
+        console.log('deleteVoter')
+        this.voterService.deleteVoter(session, this.auth.currentUser.userName)
+    } else{
+        console.log('addVoter')
+        this.voterService.addVoter(session, this.auth.currentUser.userName)
+    }
+    if(this.sortBy === 'votes'){
+        this.visibleSessions.sort(sortByVotesDesc)
+    }
+
+
+}
+
+userHasVoted(session: ISession){
+    //console.log('userName: ' + this.auth.currentUser.userName)
+    //console.log('userHasVoted:' + this.voterService.userHasVoted(session, this.auth.currentUser.userName))
+    return this.voterService.userHasVoted(session, this.auth.currentUser.userName)
+
+}
+
 }
 
 function sortByNameAsc(s1: ISession, s2: ISession){
@@ -43,3 +73,4 @@ function sortByVotesDesc(s1: ISession, s2: ISession){
     return s2.voters.length - s1.voters.length 
 
 }
+

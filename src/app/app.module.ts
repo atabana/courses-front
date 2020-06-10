@@ -24,6 +24,8 @@ import { SessionListComponent } from './courses/course-details/session-list.comp
 import { CollapsableWellComponent } from './common/collapseable-well.component';
 import { DurationPipe } from './courses/shared/duration.pipe';
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
+import { UpvoteComponent } from './courses/course-details/upvote.component';
+import { VoterService } from './courses/course-details/voter.service';
 
 let jQuery = window['$']
 
@@ -41,7 +43,8 @@ let jQuery = window['$']
     CollapsableWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent
   
   ],
   imports: [
@@ -50,7 +53,7 @@ let jQuery = window['$']
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CourseService, ToastrService, CourseRouteActivator,CourseListResolver,AuthService,
+  providers: [CourseService, ToastrService, CourseRouteActivator,CourseListResolver,AuthService,VoterService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
