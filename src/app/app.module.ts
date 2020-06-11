@@ -26,6 +26,7 @@ import { DurationPipe } from './courses/shared/duration.pipe';
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
 import { UpvoteComponent } from './courses/course-details/upvote.component';
 import { VoterService } from './courses/course-details/voter.service';
+import {HttpClientModule} from '@angular/common/http'
 
 let jQuery = window['$']
 
@@ -51,7 +52,8 @@ let jQuery = window['$']
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [CourseService, ToastrService, CourseRouteActivator,CourseListResolver,AuthService,VoterService,
     {
