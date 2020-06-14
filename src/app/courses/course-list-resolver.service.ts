@@ -10,7 +10,7 @@ export class CourseListResolver implements Resolve<any>{
 
     }
     resolve(){
-       return this.courseService.getCourses().pipe(map(courses => courses))
+       return this.courseService.getCourses()
     }
 
 }

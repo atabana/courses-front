@@ -25,9 +25,10 @@ export class CourseDetailsComponent{
     }
   
     ngOnInit(){
-      this.route.params.forEach((params: Params) => {
-          this.course = this.courseService.getCourse(+params['id'])
-          this.addMode = false
+      this.route.data.forEach((data) => {
+        this.course = data['course']
+        this.addMode = false
+          
       })
   
     }

@@ -1,19 +1,28 @@
 import { Injectable, EventEmitter } from '@angular/core'
-import { Subject, Observable } from 'rxjs'
+import { Subject, Observable, of} from 'rxjs'
 import { ICourse,ISession } from './course.model';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class CourseService{
+
+    constructor(private http: HttpClient){
+
+    }
     getCourses(): Observable<ICourse[]>{
 
-        let subject = new Subject<ICourse[]>()
-        setTimeout( () => {subject.next(COURSES); subject.complete();},
-         100)
-        return subject
+      return this.http.get<ICourse[]>('/api/events')
+          .pipe(catchError(this.handleError<ICourse[]>('getCourses',[])))
     }
 
-    getCourse(id:number): ICourse{
-      return COURSES.find( course => course.id === id)
+
+
+    getCourse(id:number): Observable<ICourse>{
+
+      return this.http.get<ICourse>('/api/events/' + id)
+          .pipe(catchError(this.handleError<ICourse>('getCourse')))      
+
     }
 
     saveCourse(course){
@@ -48,6 +57,13 @@ export class CourseService{
         emitter.emit(results)
       }, 100)
       return emitter
+    }
+
+    private handleError<T> (operation = 'operation', result?: T){
+      return (error: any): Observable<T> => {
+        console.error(error)
+        return of(result as T)
+      }
     }
 }
 

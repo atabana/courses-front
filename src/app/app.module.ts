@@ -15,7 +15,6 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
 import { CreateCourseComponent } from './courses/create-course.component';
 import { Error404Component } from './errors/error-404.component';
-import { CourseRouteActivator } from './courses/course-details/course-route-activator.service';
 import { CourseListResolver } from './courses/course-list-resolver.service';
 import { AuthService }  from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +26,7 @@ import { ModalTriggerDirective } from './common/modal-trigger.directive';
 import { UpvoteComponent } from './courses/course-details/upvote.component';
 import { VoterService } from './courses/course-details/voter.service';
 import {HttpClientModule} from '@angular/common/http'
+import { CourseResolver } from './courses/course-resolver.service';
 
 let jQuery = window['$']
 
@@ -55,7 +55,7 @@ let jQuery = window['$']
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [CourseService, ToastrService, CourseRouteActivator,CourseListResolver,AuthService,VoterService,
+  providers: [CourseService, ToastrService,CourseListResolver,CourseResolver,AuthService,VoterService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
