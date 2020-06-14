@@ -16,13 +16,13 @@ export class CreateCourseComponent{
 
     }
     cancel(){
-        this.router.navigate(['courses'])
+        this.router.navigate(['/courses'])
     }
 
     saveCourse(formValues){
-        this.courseService.saveCourse(formValues)
-        this.isDirty = false
-        this.router.navigate(['courses'])
-
+        this.courseService.saveCourse(formValues).subscribe( () => {
+            this.isDirty = false
+            this.router.navigate(['/courses'])
+        })
     }
 }

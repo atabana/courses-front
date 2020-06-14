@@ -39,7 +39,7 @@ export class CourseDetailsComponent{
         const nextId = Math.max.apply(null, this.course.sessions.map( s => s.id ))
         session.id = nextId + 1 
         this.course.sessions.push(session)
-        this.courseService.updateCourse(this.course)
+        this.courseService.saveCourse(this.course).subscribe()
         this.addMode = false
     }
 
