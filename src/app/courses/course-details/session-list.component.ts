@@ -15,6 +15,7 @@ export class SessionListComponent implements OnChanges{
 @Input() sortBy: string
 @Input() filterBy: string
 @Input() sessions: ISession[]
+@Input() courseId: number
 
 visibleSessions: ISession[] = []
 
@@ -42,10 +43,10 @@ toggleVote(session: ISession){
     console.log('toggleVote' + this.userHasVoted(session))
     if(this.userHasVoted(session)){
         console.log('deleteVoter')
-        this.voterService.deleteVoter(session, this.auth.currentUser.userName)
+        this.voterService.deleteVoter(this.courseId, session, this.auth.currentUser.userName)
     } else{
         console.log('addVoter')
-        this.voterService.addVoter(session, this.auth.currentUser.userName)
+        this.voterService.addVoter(this.courseId, session, this.auth.currentUser.userName)
     }
     if(this.sortBy === 'votes'){
         this.visibleSessions.sort(sortByVotesDesc)
