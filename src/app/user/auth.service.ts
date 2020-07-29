@@ -24,6 +24,13 @@ export class AuthService{
                 return of(false)
             }))
     }
+
+    logout(){
+        this.currentUser = undefined
+        const url = "/api/logout"
+        const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+        return this.http.post(url,{},options)
+    }
     isAuthenticated(){
         return !!this.currentUser;
     }

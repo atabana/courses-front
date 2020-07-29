@@ -41,6 +41,12 @@ export class ProfileComponent implements OnInit{
         }
 
     }
+    logout(){
+        this.auth.logout()
+            .subscribe(() => {
+                this.router.navigate(['/user/login'])
+                })
+    }
 
     validateLastName(){
         return this.lastName.valid || this.profileForm.controls.lastName.untouched
