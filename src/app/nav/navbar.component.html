@@ -17,8 +17,10 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li >
-                <a href="">Angular Connect</a>
+              <li *ngFor="let course of courses" >
+                <a  [routerLink]="['/courses',course.id]">
+                  {{course.name}}
+                </a>
               </li>
             </ul>
           </li>

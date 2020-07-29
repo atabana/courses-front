@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../user/auth.service';
 import { CourseService } from '../courses/shared/course.service';
-import { ISession } from '../courses/shared/course.model';
+import { ISession, ICourse } from '../courses/shared/course.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'nav-bar',
@@ -12,13 +13,18 @@ import { ISession } from '../courses/shared/course.model';
   
 
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit{
 
   searchTerm: string =""
   foundSessions: ISession[]
+  courses: ICourse[]
 
   constructor(public auth:AuthService, private courseService:CourseService){
     
+  }
+
+  ngOnInit(){
+    this.getCourses()
   }
   searchSessions(searchTerm){
     
@@ -29,5 +35,12 @@ export class NavBarComponent {
         }
     )
     
+  }
+  getCourses(){
+    this.courseService.getCourses()
+          .subscribe(
+              courses => {
+                this.courses = courses
+              })
   }
 }
