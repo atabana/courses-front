@@ -4,13 +4,13 @@ import { CourseService } from './shared/course.service';
 import {map} from 'rxjs/operators';
 
 @Injectable()
-export class CourseListResolver implements Resolve<any>{
+export class CourseListResolver implements Resolve<any> {
 
-    constructor(private courseService: CourseService){
+    constructor(private courseService: CourseService) {
 
     }
-    resolve(){
-       return this.courseService.getCourses()
+    resolve() {
+       return this.courseService.getCourses();
     }
 
 }

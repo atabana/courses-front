@@ -8,11 +8,11 @@ import { AuthService } from './user/auth.service';
 })
 export class AppComponent {
 
-  title: string
-constructor(private auth: AuthService){
-  this.title='courses-front'
+  title: string;
+constructor(private auth: AuthService) {
+  this.title = 'courses-front';
 }
-ngOnInit(){
-  this.auth.checkAuthenticationStatus()
+ngOnInit() {
+  this.auth.checkAuthenticationStatus();
 }
 }

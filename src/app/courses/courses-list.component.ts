@@ -18,17 +18,17 @@ import { ICourse } from './shared/course.model';
   <div>
   `
 })
-export class CoursesListComponent implements OnInit{
+export class CoursesListComponent implements OnInit {
 
-  courses:ICourse[]
+  courses: ICourse[];
 
-  constructor(private courseService: CourseService, private toasterService: ToastrService, private route: ActivatedRoute){
+  constructor(private courseService: CourseService, private toasterService: ToastrService, private route: ActivatedRoute) {
   }
 
-  ngOnInit(){
-    this.courses = this.route.snapshot.data['courses']
+  ngOnInit() {
+    this.courses = this.route.snapshot.data.courses;
   }
-  handleThumbnailClick(courseName){
-    this.toasterService.success('success: ', courseName)
+  handleThumbnailClick(courseName) {
+    this.toasterService.success('success: ', courseName);
   }
 }

@@ -10,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
                     [style.color]="iconColor"></i>
                 </div>
             <div class="badge badge-inverse votingCount">
-                <div>{{count}}</div>    
+                <div>{{count}}</div>
             </div>
 
             </div>
@@ -22,16 +22,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     styleUrls: ['./upvote.component.css']
 })
 
-export class UpvoteComponent{
+export class UpvoteComponent {
 
-    @Input() count: number 
-    @Input() set voted(val){
-        this.iconColor = val ? 'red' : 'white'
+    @Input() count: number;
+    @Input() set voted(val) {
+        this.iconColor = val ? 'red' : 'white';
     }
-    @Output() vote = new EventEmitter()
-    public iconColor: string
-    onClick(){
-        this.vote.emit({})
+    @Output() vote = new EventEmitter();
+    public iconColor: string;
+    onClick() {
+        this.vote.emit({});
     }
 
 }

@@ -23,16 +23,16 @@ import { JQ_TOKEN } from './jQuery.service';
     .modal-body {height: 250px; overflow-y: scroll;}
     `]
 })
-export class SimpleModalComponent { 
-    @Input() title: string
+export class SimpleModalComponent {
+    @Input() title: string;
 
-    @ViewChild('modalcontainer', {static: false}) containerEl: ElementRef
+    @ViewChild('modalcontainer', {static: false}) containerEl: ElementRef;
 
-    constructor(@Inject(JQ_TOKEN) private $: any){
+    constructor(@Inject(JQ_TOKEN) private $: any) {
 
     }
 
-    closeModal(){
-        this.$(this.containerEl.nativeElement).modal('hide')
+    closeModal() {
+        this.$(this.containerEl.nativeElement).modal('hide');
     }
 }

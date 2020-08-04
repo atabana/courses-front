@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
@@ -10,31 +10,31 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
-    userName
-    password
-    mouseoverLogin
-    loginInvalid = false
+    userName;
+    password;
+    mouseoverLogin;
+    loginInvalid = false;
 
-    constructor(private authService: AuthService, private router: Router){
+    constructor(private authService: AuthService, private router: Router) {
 
     }
-    login(formValues){
+    login(formValues) {
 
-        this.authService.loginUser(formValues.userName,formValues.password)
+        this.authService.loginUser(formValues.userName, formValues.password)
             .subscribe( resp => {
-                if(!resp){
-                    this.loginInvalid = true 
-                }else {
-                    console.log(formValues)
-                    this.router.navigate(['courses'])
+                if (!resp) {
+                    this.loginInvalid = true;
+                } else {
+                    console.log(formValues);
+                    this.router.navigate(['courses']);
                 }
-            })
+            });
 
 
 
     }
-    cancel(){
-        this.router.navigate(['courses'])
+    cancel() {
+        this.router.navigate(['courses']);
     }
 
 }

@@ -10,37 +10,37 @@ import { ActivatedRoute } from '@angular/router';
   styles: [`
     li > a.active {color : #F97924;}
   `]
-  
+
 
 })
-export class NavBarComponent implements OnInit{
+export class NavBarComponent implements OnInit {
 
-  searchTerm: string =""
-  foundSessions: ISession[]
-  courses: ICourse[]
+  searchTerm = '';
+  foundSessions: ISession[];
+  courses: ICourse[];
 
-  constructor(public auth:AuthService, private courseService:CourseService){
-    
+  constructor(public auth: AuthService, private courseService: CourseService) {
+
   }
 
-  ngOnInit(){
-    this.getCourses()
+  ngOnInit() {
+    this.getCourses();
   }
-  searchSessions(searchTerm){
-    
+  searchSessions(searchTerm) {
+
     this.courseService.searchSessions(searchTerm).subscribe(
       sessions => {
-        this.foundSessions = sessions
-        console.log(this.foundSessions)
+        this.foundSessions = sessions;
+        console.log(this.foundSessions);
         }
-    )
-    
+    );
+
   }
-  getCourses(){
+  getCourses() {
     this.courseService.getCourses()
           .subscribe(
               courses => {
-                this.courses = courses
-              })
+                this.courses = courses;
+              });
   }
 }

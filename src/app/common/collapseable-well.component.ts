@@ -11,10 +11,10 @@ import { Component } from '@angular/core';
 
 export class CollapsableWellComponent {
 
-    isVisible: boolean = true
+    isVisible = true;
 
-    toggleContent(){
-        this.isVisible = !this.isVisible
+    toggleContent() {
+        this.isVisible = !this.isVisible;
     }
 
 }

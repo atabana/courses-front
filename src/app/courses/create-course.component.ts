@@ -9,20 +9,20 @@ import { CourseService } from './shared/course.service';
     .error input {background-color: #E3C3C5}
     `]
 })
-export class CreateCourseComponent{
-    newCourse
-    isDirty: boolean = true; 
-    constructor(private router: Router, private courseService: CourseService){
+export class CreateCourseComponent {
+    newCourse;
+    isDirty = true;
+    constructor(private router: Router, private courseService: CourseService) {
 
     }
-    cancel(){
-        this.router.navigate(['/courses'])
+    cancel() {
+        this.router.navigate(['/courses']);
     }
 
-    saveCourse(formValues){
+    saveCourse(formValues) {
         this.courseService.saveCourse(formValues).subscribe( () => {
-            this.isDirty = false
-            this.router.navigate(['/courses'])
-        })
+            this.isDirty = false;
+            this.router.navigate(['/courses']);
+        });
     }
 }

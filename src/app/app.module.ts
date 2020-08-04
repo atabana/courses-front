@@ -5,11 +5,11 @@ import { AppComponent } from './app.component';
 import { CoursesListComponent } from './courses/courses-list.component';
 import { CourseThumbnailComponent } from './courses/course-thumbnail-component';
 import { NavBarComponent } from './nav/navbar.component';
-import { CourseService } from './courses/shared/course.service'
+import { CourseService } from './courses/shared/course.service';
 import { ToastrService } from './common/toastr.service';
 import { SimpleModalComponent } from './common/simple-modal.component';
 
-import { JQ_TOKEN } from './common/jQuery.service'
+import { JQ_TOKEN } from './common/jQuery.service';
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from 'src/routes';
@@ -25,10 +25,10 @@ import { DurationPipe } from './courses/shared/duration.pipe';
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
 import { UpvoteComponent } from './courses/course-details/upvote.component';
 import { VoterService } from './courses/course-details/voter.service';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
 import { CourseResolver } from './courses/course-resolver.service';
 
-let jQuery = window['$']
+const jQuery = window.$;
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ let jQuery = window['$']
     SimpleModalComponent,
     ModalTriggerDirective,
     UpvoteComponent
-  
+
   ],
   imports: [
     BrowserModule,
@@ -55,11 +55,11 @@ let jQuery = window['$']
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [CourseService, ToastrService,CourseListResolver,CourseResolver,AuthService,VoterService,
+  providers: [CourseService, ToastrService, CourseListResolver, CourseResolver, AuthService, VoterService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
-    }, 
+    },
     {
       provide: JQ_TOKEN,
       useValue: jQuery
@@ -69,9 +69,9 @@ let jQuery = window['$']
 })
 export class AppModule { }
 
-export function checkDirtyState(component: CreateCourseComponent){
+export function checkDirtyState(component: CreateCourseComponent) {
 
-  if(component.isDirty){
-    return window.confirm('You have not saved this Course, do you really want to cancel?')
+  if (component.isDirty) {
+    return window.confirm('You have not saved this Course, do you really want to cancel?');
   }
 }
