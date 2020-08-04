@@ -28,7 +28,7 @@ import { VoterService } from './courses/course-details/voter.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CourseResolver } from './courses/course-resolver.service';
 
-const jQuery = window.$;
+let jQuery = window['$']
 
 @NgModule({
   declarations: [

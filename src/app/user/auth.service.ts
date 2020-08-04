@@ -18,7 +18,7 @@ export class AuthService {
         const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
         return this.http.post(url, loginInfo, options)
             .pipe(tap( data => {
-                this.currentUser = data.user as IUser;
+                this.currentUser = <IUser> data
             }))
             .pipe(catchError( err => {
                 return of(false);
@@ -40,7 +40,7 @@ export class AuthService {
         this.http.get(url)
         .pipe(tap( data => {
             if (data instanceof Object) {
-                this.currentUser = data as IUser;
+                this.currentUser = <IUser> data
             }
         }))
         .subscribe();
